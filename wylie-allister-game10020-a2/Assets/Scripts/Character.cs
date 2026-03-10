@@ -35,5 +35,12 @@ public class Character : MonoBehaviour
         Vector3 moveVelo = move * moveSpeed;
 
         controller.Move(moveVelo * Time.deltaTime);
+
+        Vector3 hVelo = new Vector3(moveVelo.x, 0f, moveVelo.z);
+        if (hVelo.sqrMagnitude > 0.001f)
+        {
+            Quaternion tRotate = Quaternion.LookRotation(hVelo);
+            transform.rotation = Quaternion.Slerp(transform.rotation, tRotate, 10f * Time.deltaTime);
+        }
     }
 }
