@@ -21,6 +21,7 @@ public class SceneManager : MonoBehaviour
     private void Start()
     {
         fan.OnFanHit.AddListener(RotateFan);
+        brazier.OnBrazierOut.AddListener(BlowOutBrazier);
 
         sword.SetActive(false);
     }
@@ -55,5 +56,10 @@ public class SceneManager : MonoBehaviour
         //rotate fan on hit
             fanState.transform.Rotate(currentAngle);
         
+    }
+
+    void BlowOutBrazier(Brazier brazier)
+    {
+
     }
 }
