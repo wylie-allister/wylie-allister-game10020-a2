@@ -13,17 +13,36 @@ public class SceneManager : MonoBehaviour
     public Brazier brazier;
     public Door door;
 
+    public GameObject sword;
+    bool isSwordEnabled = false;
+
     Vector3 currentAngle = new Vector3(0f, 90f, 0f);
     // Start is called before the first frame update
     private void Start()
     {
         fan.OnFanHit.AddListener(RotateFan);
+
+        sword.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        EnableSword();
+    }
+
+    public void EnableSword()
+    {
+        if (isSwordEnabled && Input.GetKeyDown(KeyCode.E))
+        {
+            isSwordEnabled = false;
+            sword.SetActive(false);
+        }
+        else if (!isSwordEnabled && Input.GetKeyDown(KeyCode.E))
+        {
+            isSwordEnabled = true;
+            sword.SetActive(true);
+        }
     }
 
     void UnlockDoor()
@@ -33,8 +52,8 @@ public class SceneManager : MonoBehaviour
 
     void RotateFan(Fan fanState)
     {
-        Debug.Log("Ping");
-
-        fanState.transform.Rotate(currentAngle);
+        //rotate fan on hit
+            fanState.transform.Rotate(currentAngle);
+        
     }
 }

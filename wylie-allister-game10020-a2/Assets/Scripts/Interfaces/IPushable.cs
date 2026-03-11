@@ -5,5 +5,5 @@ using UnityEngine;
 public interface IPushable
 {
 
-    public void Push(GameObject otherGameObject);
+    public void Push(GameObject go);
 }

@@ -54,4 +54,13 @@ public class Character : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, tRotate, 10f * Time.deltaTime);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<IPushable>() != null)
+        {
+            IPushable pushable = other.GetComponent<IPushable>();
+            pushable.Push(gameObject);
+        }
+    }
 }

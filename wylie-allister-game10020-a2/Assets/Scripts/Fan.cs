@@ -17,16 +17,13 @@ public class Fan : MonoBehaviour, IStabbable
 
     // Update is called once per frame
     void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            OnFanHit.Invoke(this);
-        }    
+    {   
     }
 
     public void Stab(GameObject go)
     {
-        Debug.Log("Ping!");
-        OnFanHit.Invoke(this);
+            Debug.Log("Ping!");
+            OnFanHit.Invoke(this);
+        
     }
 }
