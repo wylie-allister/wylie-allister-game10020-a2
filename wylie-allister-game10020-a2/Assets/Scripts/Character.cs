@@ -7,6 +7,8 @@ using UnityEngine.Events;
 public class Character : MonoBehaviour
 {
     public float moveSpeed = 4f;
+    public float gravity = -10f;
+    Vector3 velo;
 
     CharacterController controller;
 
@@ -35,6 +37,15 @@ public class Character : MonoBehaviour
         Vector3 moveVelo = move * moveSpeed;
 
         controller.Move(moveVelo * Time.deltaTime);
+
+        if (controller.isGrounded && velo.y < 0)
+        {
+            velo.y = -2f;
+        }
+
+        velo.y += gravity * Time.deltaTime;
+
+        moveVelo.y = velo.y;
 
         Vector3 hVelo = new Vector3(moveVelo.x, 0f, moveVelo.z);
         if (hVelo.sqrMagnitude > 0.001f)
