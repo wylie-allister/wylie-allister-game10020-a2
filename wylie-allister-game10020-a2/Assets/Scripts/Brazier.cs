@@ -29,6 +29,7 @@ public class Brazier : MonoBehaviour, IStabbable, IBlowable
 
     public void Blown(GameObject go)
     {
+        Debug.Log("Pong");
         OnBrazierOut.Invoke(this);
     }
 }

@@ -60,6 +60,6 @@ public class SceneManager : MonoBehaviour
 
     void BlowOutBrazier(Brazier brazier)
     {
-
+        Debug.Log("Double Pong");
     }
 }
