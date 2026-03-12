@@ -15,32 +15,23 @@ public class Brazier : MonoBehaviour, IStabbable, IBlowable
 
     [HideInInspector]
     public UnityEvent<Brazier> OnBrazierOut;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void LightOut()
     {
+        //diables flame
         this.flame.SetActive(false);
     }
 
     public void Stab (GameObject go)
     {
+        //enables flame when stabbed
         this.flame.SetActive(true);
         this.hasTriggered = false;
     }
 
     public void Blown(GameObject go)
     { 
+        //triggers the blown out event when fan goes over it
         if (!this.hasTriggered)
         {
             OnBrazierOut.Invoke(this);

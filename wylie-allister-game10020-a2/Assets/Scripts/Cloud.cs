@@ -20,6 +20,7 @@ public class Cloud : MonoBehaviour, IBlowable
 
     public void Blown(GameObject go)
     {
+        //solidifies when blown on
         solid.SetActive(true);
     }
 }

@@ -5,7 +5,6 @@ using UnityEngine.Events;
 
 public class Fan : MonoBehaviour, IStabbable
 {
-    Vector3 currentAngle;
 
     [HideInInspector]
     public UnityEvent<Fan> OnFanHit;
@@ -24,7 +23,7 @@ public class Fan : MonoBehaviour, IStabbable
 
     public void Stab(GameObject go)
     {
+        //rotates on stabbing
             OnFanHit.Invoke(this);
-        
     }
 }

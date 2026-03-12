@@ -28,14 +28,17 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
        
-
+        //rotates fan when you hit it
         fan.OnFanHit.AddListener(RotateFan);
 
+        //unlocks door and updates ui when 4 braziers are out
         door.OnBrazierCount.AddListener(UnlockDoor);
         door.OnBrazierCount.AddListener(ui.UpdateDoorUI);
+        //Enables wind when 4 braziers are out
         fan.OnBrazierCompletion.AddListener(EnableCollider);
         fan.OnBrazierCompletion.AddListener(ui.UpdateCloudUI);
 
+        //blows out a brazier and updates ui
  foreach (Transform child in brazierHolder.transform)
         {
             Brazier brazier = child.GetComponent<Brazier>();
@@ -43,6 +46,7 @@ public class LevelManager : MonoBehaviour
         brazier.OnBrazierOut.AddListener(ui.UpdateBrazierCount);
 
         }
+ //disables sword by default
         sword.SetActive(false);
     }
 
@@ -55,6 +59,7 @@ public class LevelManager : MonoBehaviour
 
     public void EnableSword()
     {
+        //enables sword when pressing E
         if (isSwordEnabled && Input.GetKeyDown(KeyCode.E))
         {
             isSwordEnabled = false;
@@ -69,6 +74,7 @@ public class LevelManager : MonoBehaviour
 
     void UnlockDoor(Door door)
     {
+        //disables the door, invokes fan solidifier event
         door.LockCheck();
         fan.OnBrazierCompletion.Invoke(fan);
 
@@ -83,13 +89,14 @@ public class LevelManager : MonoBehaviour
 
     void BlowOutBrazier(Brazier brazier)
     {
-        Debug.Log("Double Pong");
+        //blows out brazier and increases count
         brazier.LightOut();
         brazierUnlitCount++;
     }
 
     void EnableCollider(Fan fan)
     {
+        //enables wind to solidify cloud block
         wind.SetActive(true);
     }
 }

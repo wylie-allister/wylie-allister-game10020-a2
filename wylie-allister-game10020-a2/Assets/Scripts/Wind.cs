@@ -18,6 +18,7 @@ public class Wind : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
+        //makes the wind be able to trigger the blowable objects
         if (other.GetComponent<IBlowable>() != null)
         {
             IBlowable blow = other.GetComponent<IBlowable>();

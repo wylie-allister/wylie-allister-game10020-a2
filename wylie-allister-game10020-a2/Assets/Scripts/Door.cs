@@ -19,6 +19,7 @@ public class Door : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //invokes door open if 4 braziers are out
         if (lm.brazierUnlitCount >= 4)
         {
             OnBrazierCount.Invoke(this);
@@ -28,6 +29,7 @@ public class Door : MonoBehaviour
 
     public void LockCheck()
     {
+        //disables door 
             doorPrefab.SetActive(false);
         
     }

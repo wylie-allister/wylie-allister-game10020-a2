@@ -25,12 +25,11 @@ public class Character : MonoBehaviour
     void Update()
     {
         PlayerMove();
-        
-
     }
 
     void PlayerMove()
     {
+        //general player controller stuff
         Vector2 moveDirection = moveInput.action.ReadValue<Vector2>();
 
         Vector3 move = Vector3.right * moveDirection.x + Vector3.forward * moveDirection.y;
@@ -57,6 +56,7 @@ public class Character : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //allows the player to push (never used)
         if (other.GetComponent<IPushable>() != null)
         {
             IPushable pushable = other.GetComponent<IPushable>();

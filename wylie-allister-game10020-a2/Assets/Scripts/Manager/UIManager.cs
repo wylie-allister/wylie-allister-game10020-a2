@@ -24,16 +24,19 @@ public class UIManager : MonoBehaviour
 
     public void UpdateBrazierCount(Brazier b)
     {
+        //updates brazier text
         brazierCount.text = $"Braziers Out: {sm.brazierUnlitCount}";
     }
 
     public void UpdateDoorUI(Door door)
     {
+        //enables door unlock ui
         doorUnlock.SetActive(true);
     }
 
     public void UpdateCloudUI(Fan f)
     {
+        //enables cloud active ui
         cloudUI.SetActive(true);
     }
 }
