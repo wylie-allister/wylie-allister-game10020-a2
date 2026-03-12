@@ -27,6 +27,10 @@ public class SceneManager : MonoBehaviour
         fan.OnFanHit.AddListener(RotateFan);
         brazier.OnBrazierOut.AddListener(BlowOutBrazier);
         brazier.OnBrazierOut.AddListener(ui.UpdateBrazierCount);
+        door.OnBrazierCount.AddListener(UnlockDoor);
+        door.OnBrazierCount.AddListener(ui.UpdateDoorUI);
+        fan.OnBrazierCompletion.AddListener(fan.EnableCollider);
+        fan.OnBrazierCompletion.AddListener(ui.UpdateCloudUI);
 
         sword.SetActive(false);
     }
@@ -35,6 +39,7 @@ public class SceneManager : MonoBehaviour
     void Update()
     {
         EnableSword();
+
     }
 
     public void EnableSword()
@@ -53,10 +58,8 @@ public class SceneManager : MonoBehaviour
 
     void UnlockDoor(Door door)
     {
-        //if brazier unlit count == 4 unlock door, else lock door
-        if (brazier.brazierUnlitCount < 4) return;
-
         door.LockCheck();
+        fan.OnBrazierCompletion.Invoke(fan);
 
     }
 

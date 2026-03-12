@@ -6,6 +6,8 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI brazierCount;
+    public GameObject doorUnlock;
+    public GameObject cloudUI;
 
     public SceneManager sm;
     // Start is called before the first frame update
@@ -23,5 +25,15 @@ public class UIManager : MonoBehaviour
     public void UpdateBrazierCount(Brazier b)
     {
         brazierCount.text = $"Braziers Out: {b.brazierUnlitCount}";
+    }
+
+    public void UpdateDoorUI(Door door)
+    {
+        doorUnlock.SetActive(true);
+    }
+
+    public void UpdateCloudUI(Fan f)
+    {
+        cloudUI.SetActive(true);
     }
 }

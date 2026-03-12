@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,6 +13,7 @@ public class Brazier : MonoBehaviour, IStabbable, IBlowable
 
     public int brazierUnlitCount = 0;
 
+
     [HideInInspector]
     public UnityEvent<Brazier> OnBrazierOut;
     // Start is called before the first frame update
@@ -23,7 +25,7 @@ public class Brazier : MonoBehaviour, IStabbable, IBlowable
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void LightOut()
