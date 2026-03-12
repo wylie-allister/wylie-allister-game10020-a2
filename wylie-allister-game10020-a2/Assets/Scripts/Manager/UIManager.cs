@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
     public GameObject doorUnlock;
     public GameObject cloudUI;
 
-    public SceneManager sm;
+    public LevelManager sm;
     // Start is called before the first frame update
     void Start()
     {

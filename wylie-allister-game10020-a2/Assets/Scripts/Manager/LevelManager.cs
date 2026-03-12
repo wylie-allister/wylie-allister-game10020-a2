@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class SceneManager : MonoBehaviour
+public class LevelManager : MonoBehaviour
 {
 
     public Character character;
 
     public Cloud cloud;
     public Fan fan;
+    //this is the problem
     public Brazier brazier;
     public Door door;
     public UIManager ui;
@@ -24,6 +25,7 @@ public class SceneManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        
         fan.OnFanHit.AddListener(RotateFan);
         brazier.OnBrazierOut.AddListener(BlowOutBrazier);
         brazier.OnBrazierOut.AddListener(ui.UpdateBrazierCount);

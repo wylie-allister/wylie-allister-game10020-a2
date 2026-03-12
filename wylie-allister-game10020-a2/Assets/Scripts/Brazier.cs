@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -19,7 +20,8 @@ public class Brazier : MonoBehaviour, IStabbable, IBlowable
     // Start is called before the first frame update
     void Start()
     {
-        
+
+
     }
 
     // Update is called once per frame
@@ -30,17 +32,17 @@ public class Brazier : MonoBehaviour, IStabbable, IBlowable
 
     public void LightOut()
     {
-        flame.SetActive(false);
+        this.flame.SetActive(false);
     }
 
     public void Stab (GameObject go)
     {
-        flame.SetActive(true);
+        this.flame.SetActive(true);
         this.hasTriggered = false;
     }
 
     public void Blown(GameObject go)
-    {
+    { 
         if (!this.hasTriggered)
         {
             OnBrazierOut.Invoke(this);
