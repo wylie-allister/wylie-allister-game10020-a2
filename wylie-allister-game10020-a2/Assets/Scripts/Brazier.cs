@@ -8,6 +8,10 @@ public class Brazier : MonoBehaviour, IStabbable, IBlowable
 
     public GameObject flame;
 
+    bool hasTriggered = false;
+
+    public int brazierUnlitCount = 0;
+
     [HideInInspector]
     public UnityEvent<Brazier> OnBrazierOut;
     // Start is called before the first frame update
@@ -22,14 +26,23 @@ public class Brazier : MonoBehaviour, IStabbable, IBlowable
         
     }
 
+    public void LightOut()
+    {
+        flame.SetActive(false);
+    }
+
     public void Stab (GameObject go)
     {
         flame.SetActive(true);
+        this.hasTriggered = false;
     }
 
     public void Blown(GameObject go)
     {
-        Debug.Log("Pong");
-        OnBrazierOut.Invoke(this);
+        if (!this.hasTriggered)
+        {
+            OnBrazierOut.Invoke(this);
+            this.hasTriggered = true;
+        }
     }
 }

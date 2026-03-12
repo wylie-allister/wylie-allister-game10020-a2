@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
+using TMPro;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
-    public GameObject doorPrefab;
+    public TextMeshProUGUI brazierCount;
+
+    public SceneManager sm;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,10 +20,8 @@ public class Door : MonoBehaviour
         
     }
 
-
-    public void LockCheck()
+    public void UpdateBrazierCount(Brazier b)
     {
-            doorPrefab.SetActive(false);
-        
+        brazierCount.text = $"Braziers Out: {b.brazierUnlitCount}";
     }
 }
