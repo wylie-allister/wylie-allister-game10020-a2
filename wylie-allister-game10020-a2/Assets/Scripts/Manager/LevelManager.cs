@@ -11,29 +11,39 @@ public class LevelManager : MonoBehaviour
     public Cloud cloud;
     public Fan fan;
     //this is the problem
-    public Brazier brazier;
+    //public Brazier brazier;
     public Door door;
     public UIManager ui;
 
     public GameObject sword;
     public GameObject doorOb;
+    public GameObject brazierHolder;
     bool isSwordEnabled = false;
 
     Vector3 currentAngle = new Vector3(0f, 90f, 0f);
 
-    
+    public int brazierUnlitCount = 0;
+
+
     // Start is called before the first frame update
     private void Start()
     {
-        
+       
+
         fan.OnFanHit.AddListener(RotateFan);
-        brazier.OnBrazierOut.AddListener(BlowOutBrazier);
-        brazier.OnBrazierOut.AddListener(ui.UpdateBrazierCount);
+
         door.OnBrazierCount.AddListener(UnlockDoor);
         door.OnBrazierCount.AddListener(ui.UpdateDoorUI);
         fan.OnBrazierCompletion.AddListener(fan.EnableCollider);
         fan.OnBrazierCompletion.AddListener(ui.UpdateCloudUI);
 
+ foreach (Transform child in brazierHolder.transform)
+        {
+            Brazier brazier = child.GetComponent<Brazier>();
+        brazier.OnBrazierOut.AddListener(BlowOutBrazier);
+        brazier.OnBrazierOut.AddListener(ui.UpdateBrazierCount);
+
+        }
         sword.SetActive(false);
     }
 
@@ -76,6 +86,6 @@ public class LevelManager : MonoBehaviour
     {
         Debug.Log("Double Pong");
         brazier.LightOut();
-        brazier.brazierUnlitCount++;
+        brazierUnlitCount++;
     }
 }

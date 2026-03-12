@@ -12,8 +12,6 @@ public class Brazier : MonoBehaviour, IStabbable, IBlowable
 
     bool hasTriggered = false;
 
-    public int brazierUnlitCount = 0;
-
 
     [HideInInspector]
     public UnityEvent<Brazier> OnBrazierOut;

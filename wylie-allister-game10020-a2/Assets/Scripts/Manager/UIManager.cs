@@ -24,7 +24,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateBrazierCount(Brazier b)
     {
-        brazierCount.text = $"Braziers Out: {b.brazierUnlitCount}";
+        brazierCount.text = $"Braziers Out: {sm.brazierUnlitCount}";
     }
 
     public void UpdateDoorUI(Door door)
