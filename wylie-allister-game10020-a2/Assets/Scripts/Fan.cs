@@ -7,8 +7,6 @@ public class Fan : MonoBehaviour, IStabbable
 {
     Vector3 currentAngle;
 
-    public GameObject collider;
-
     [HideInInspector]
     public UnityEvent<Fan> OnFanHit;
     public UnityEvent<Fan> OnBrazierCompletion;
@@ -23,10 +21,6 @@ public class Fan : MonoBehaviour, IStabbable
     {   
     }
 
-    public void EnableCollider(Fan fan)
-    {
-        fan.collider.SetActive(true);
-    }
 
     public void Stab(GameObject go)
     {
