@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class Door : MonoBehaviour
 {
     public GameObject doorPrefab;
+    public GameObject exit;
     public LevelManager lm;
 
     public UnityEvent<Door> OnBrazierCount;
@@ -31,6 +32,7 @@ public class Door : MonoBehaviour
     {
         //disables door 
             doorPrefab.SetActive(false);
+        exit.SetActive(true);
         
     }
 
